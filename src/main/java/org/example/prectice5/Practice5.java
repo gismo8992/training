@@ -7,12 +7,33 @@ public class Practice5 {
         myThread1.start();
         System.out.println("Hello from main thread!");
         myThread2.start();
+        Thread thread = new Thread(new Runner());
+        thread.start();
+    }
+}
+
+class Runner implements Runnable{
+    @Override
+    public void run() {
+        for(int i = 0; i <=5; i++) {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("Hello from Runner " + i);
+        }
     }
 }
 
 class MyThread extends Thread {
     public void run() {
-        for(int i = 0; i <5; i++) {
+        for(int i = 0; i <=5; i++) {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             System.out.println("Hello from MyThread " + i);
         }
     }
